@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once "../class/database.php";
 include_once "../class/Auth.php";
 

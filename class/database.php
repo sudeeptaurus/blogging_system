@@ -3,7 +3,7 @@ class Databases
 {
     private $host = "localhost";
     private $user = "root";
-    private $pass = "2020taurushss";
+    private $pass = "";
     private $dbname = "blogging_system";
 
     private $dbh;

@@ -15,15 +15,16 @@
                 <h3 class="text-center">Welcome Back</h3>
                 <div class="card card-default">
                     <div class="card card-body">
-                        <form action="" method="post" autocomplete="off">
+                        <form action="process.php" method="post" autocomplete="off">
                             <div class="form-group">
                                 <input type="email" name="email" id="email" placeholder="Email" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                                <input type="password" name="password" id="password" placeholder="Password"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Login" class="btn btn-success btn-block">
+                                <input type="submit" name="login" value="Login" class="btn btn-success btn-block">
                             </div>
                         </form>
                     </div>

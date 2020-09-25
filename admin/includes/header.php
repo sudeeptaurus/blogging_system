@@ -1,4 +1,25 @@
-<?php ob_start(); ?>
+<?php
+
+ob_start();
+session_start();
+
+if (!isset($_SESSION['blog_id'])) {
+    header("Location: ../auth/auth.php");
+}
+
+$user = $_SESSION['blog_user'];
+$user_id = $_SESSION['blog_id'];
+
+include_once "../class/database.php";
+include_once "../class/Auth.php";
+include_once "../class/Category.php";
+include_once "../class/Posts.php";
+
+$auth = new Authentication;
+$category_obj = new Category;
+$post_obj = new Posts;
+
+?>
 
 
 <!DOCTYPE html>

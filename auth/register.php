@@ -28,7 +28,7 @@
                                     class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Register" class="btn btn-success btn-block">
+                                <input type="submit" name="register" value="Register" class="btn btn-success btn-block">
                             </div>
                         </form>
                     </div>

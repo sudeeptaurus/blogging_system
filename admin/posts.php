@@ -1,4 +1,14 @@
-<?php include 'includes/header.php'; ?>
+<?php
+
+include 'includes/header.php';
+
+if (isset($_GET['page']) && $_GET['page'] != "" && $_GET['page'] >= 1) {
+	Posts::$pageno = $_GET['page'];
+} else {
+	Posts::$pageno = 1;
+}
+
+?>
 
 <div id="wrapper">
 
@@ -13,22 +23,37 @@
 			<!-- Page Heading -->
 			<div class="row">
 
-					<h1 class="page-header">
-						Welcome to the Administration Panel
-					</h1>
-</div>
-				</div>
+				<h1 class="page-header">
+					Welcome to the Administration Panel
+				</h1>
+				<?php
+				if (isset($_GET['source'])) {
+					$source = $_GET['source'];
 
-
+					if ($source == "add_new") {
+						include_once "includes/addpost.php";
+					} elseif ($source == "trash") {
+						include_once "includes/trashpost.php";
+					} else {
+						include_once "includes/addpost.php";
+					}
+				} else {
+					include_once "includes/post.php";
+				}
+				?>
 			</div>
-
-			<!-- /.row -->
-
 		</div>
-		<!-- /.container-fluid -->
+
 
 	</div>
-	<!-- /#page-wrapper -->
+
+	<!-- /.row -->
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->

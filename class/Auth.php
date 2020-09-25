@@ -11,7 +11,7 @@ class Authentication
 
     public function register(array $data)
     {
-        $this->db->query("INSERT INTO admin (username, email, password) VALUES(?, ?, ?)");
+        $this->db->query("INSERT INTO admin (username, email, password) VALUES(?,?,?)");
         for ($i = 0; $i < count($data); $i++) {
             $this->db->bind(($i + 1), $data[$i]);
         }
@@ -40,6 +40,41 @@ class Authentication
         $this->db->execute();
 
         if ($this->db->rowCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getDetails($id)
+    {
+        $this->db->query("SELECT * FROM admin WHERE id=?");
+        $this->db->bind(1, $id);
+        $details = $this->db->single();
+        if ($this->db->rowCount() > 0) {
+            return $details;
+        }
+        return false;
+    }
+
+    public function setupProfile(array $data)
+    {
+        $this->db->query("UPDATE admin SET username=?, email=?, description=?, fb=?, github=?, ytb=?, is_setup=true WHERE id=?");
+        for ($i = 0; $i < count($data); $i++) {
+            $this->db->bind(($i + 1), $data[$i]);
+        }
+        if ($this->db->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isAuth($id)
+    {
+        $this->db->query("SELECT * FROM admin WHERE id=?");
+        $this->db->bind(1, $id);
+        $data = $this->db->single();
+        $is_setup = $data->is_setup;
+        if ($is_setup) {
             return true;
         }
         return false;
