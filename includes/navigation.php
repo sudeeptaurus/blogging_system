@@ -35,14 +35,25 @@
       <div class="collapse navbar-collapse" id="navbarMenu">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link active" href="index">Home</a>
           </li>
+
+
           <li class="nav-item dropdown">
-            <a class="nav-link" href="category.php">Categories</a>
+            <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown05">
+              <?php if ($cat = $category_obj->loadCategories()) : ?>
+                <?php foreach ($cat as $c) : ?>
+                  <a class="dropdown-item" href="category.php"><?php echo $c->category; ?></a>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </div>
           </li>
-          <li class="nav-item">
+
+
+          <!-- <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
-          </li>
+          </li> -->
         </ul>
 
       </div>

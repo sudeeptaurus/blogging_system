@@ -2,12 +2,12 @@
 
 include_once "functions.php";
 
-function add($title, $content, $tags, $image, $author, $slug, $category, $status)
+function add($title, $content, $tags, $image, $author, $slug, $category, $status, $date)
 {
     global $post_obj;
     if ($target = upload($image, "post_images/", true)) {
         $title = ucwords($title);
-        $data = [$title, $content, $category, $tags, $target, $author, $status, $slug];
+        $data = [$title, $content, $category, $tags, $target, $author, $status, $slug, $date];
         if ($post_obj->addPost($data)) {
             return true;
         }
@@ -26,9 +26,10 @@ if (isset($_POST['save'])) {
     $author = $user;
     $slug = create_slug($title);
     $status = (isset($_POST['status']) ? true : false);
+    $date = date("F d, Y");
 
     if ($auth->isAuth($user_id)) {
-        if (add($title, $content, $tags, $image, $author, $slug, $category, $status)) {
+        if (add($title, $content, $tags, $image, $author, $slug, $category, $status, $date)) {
             $msg = "<div class='alert alert-success'>Post added successfully</div>";
         } else {
             $msg = "<div class='alert alert-danger'>Something went wrong</div>";
@@ -48,9 +49,10 @@ if (isset($_POST['save_continue'])) {
     $author = $user;
     $slug = create_slug($title);
     $status = (isset($_POST['status']) ? true : false);
+    $date = date("F d, Y");
 
     if ($auth->isAuth($user_id)) {
-        if (add($title, $content, $tags, $image, $author, $slug, $category, $status)) {
+        if (add($title, $content, $tags, $image, $author, $slug, $category, $status, $date)) {
             header("Location: posts.php");
         } else {
             $msg = "<div class='alert alert-danger'>Something went wrong</div>";

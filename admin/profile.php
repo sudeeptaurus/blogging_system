@@ -20,8 +20,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome to your profile page
+                        Welcome to your profile page, <?php echo $user; ?>
                     </h1>
+                    <div class="col-lg-8">
+                        <img src="<?php echo $details->profile_pic; ?>" alt="" class="img-fluid img-circle" style="margin-bottom: 10px;" width="155" height="155">
+                        <div class="alert alert-info">
+                            Go <a href="settings.php"><b>here</b></a>
+                            to update your password or profile picture.
+                        </div>
+                    </div>
                     <div class="col-lg-8">
                         <p class="text-danger" style="font-size: 14px;">* means they are required!</p>
                         <form action="process.php" method="post">

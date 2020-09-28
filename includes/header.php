@@ -1,3 +1,21 @@
+<?php
+
+ob_start();
+include_once "class/database.php";
+include_once "class/Posts.php";
+include_once "class/Category.php";
+
+if (isset($_GET['page']) && $_GET['page'] != "" && $_GET['page'] >= 1) {
+  Posts::$pageno = $_GET['page'];
+} else {
+  Posts::$pageno = 1;
+}
+
+$post_obj = new Posts();
+$category_obj = new Category();
+
+?>
+
 <!doctype html>
 <html lang="en">
 

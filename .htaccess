@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^post/([0-9a-zA-Z_-]+) post.php?post=$1
+RewriteRule ^index?$ index.php

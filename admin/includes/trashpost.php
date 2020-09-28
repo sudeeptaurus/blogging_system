@@ -9,6 +9,13 @@ if (isset($_GET['delete'])) {
     header("Location: posts.php?source=trash&page=$page");
 }
 
+if (isset($_GET['restore'])) {
+    $id = $_GET['restore'];
+    $post_obj->restorePost($id);
+    $page = $_GET['page'];
+    header("Location: posts.php?source=trash&page=$page&post_restored");
+}
+
 ?>
 
 <?php if ($post_obj->loadTrashPosts()) : ?>

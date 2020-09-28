@@ -16,8 +16,14 @@
                     <h1 class="page-header">
                         Update your profile picture here and password
                     </h1>
+                    <div class="col-lg-12">
+                        <div class="alert alert-info">
+                            Go <a href="profile.php"><b>here</b></a>
+                            to update your details.
+                        </div>
+                    </div>
                     <div class="col-lg-6">
-                        <form action="" method="post">
+                        <form action="process.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="file" name="picture">
                             </div>
@@ -28,7 +34,7 @@
                         </form>
                     </div>
                     <div class="col-lg-6">
-                        <form action="" method="post">
+                        <form action="process.php" method="post">
                             <div class="form-group">
                                 <input type="password" name="old_password" placeholder="Old Password" class="form-control">
                             </div>

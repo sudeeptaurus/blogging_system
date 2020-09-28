@@ -16,8 +16,8 @@ class Posts
     public function addPost(array $data)
     {
         $this->db->query("INSERT INTO posts
-                            (title, content, category, tags, image, author, status, slug)
-                            VALUES(?,?,?,?,?,?,?,?)
+                            (title, content, category, tags, image, author, status, slug, date_added)
+                            VALUES(?,?,?,?,?,?,?,?,?)
         ");
 
         for ($i = 0; $i < count($data); $i++) {
@@ -26,6 +26,33 @@ class Posts
 
         if ($this->db->execute()) {
             return true;
+        }
+        return false;
+    }
+
+    public function editPost(array $data)
+    {
+        $this->db->query("UPDATE posts SET title=?, content=?, category=?, tags=?, image=? WHERE id=?");
+
+        for ($i = 0; $i < count($data); $i++) {
+            $this->db->bind(($i + 1), $data[$i]);
+        }
+
+        if ($this->db->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function loadSingle($id)
+    {
+        $this->db->query("SELECT * FROM posts WHERE id=? OR slug=? AND status=true");
+        $this->db->bind(1, $id);
+        $this->db->bind(2, $id);
+        $data = $this->db->single();
+
+        if ($this->db->rowCount() > 0) {
+            return $data;
         }
         return false;
     }

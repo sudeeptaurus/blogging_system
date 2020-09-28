@@ -14,10 +14,12 @@ include_once "../class/database.php";
 include_once "../class/Auth.php";
 include_once "../class/Category.php";
 include_once "../class/Posts.php";
+include_once "../class/Misc.php";
 
 $auth = new Authentication;
 $category_obj = new Category;
 $post_obj = new Posts;
+$misc = new Misc();
 
 ?>
 

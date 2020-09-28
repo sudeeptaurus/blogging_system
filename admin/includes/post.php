@@ -9,6 +9,13 @@ if (isset($_GET['delete'])) {
     header("Location: posts.php?page=$page");
 }
 
+if (isset($_GET['manage'])) {
+    $id = $_GET['manage'];
+    $post_obj->trashPost($id);
+    $page = $_GET['page'];
+    header("Location: posts.php?page=$page&post_trashed");
+}
+
 ?>
 
 <?php if ($post_obj->loadPosts()) : ?>
@@ -42,8 +49,8 @@ if (isset($_GET['delete'])) {
                         <td><?php echo $author; ?></td>
                         <td><?php echo $category; ?></td>
                         <td><?php echo $status; ?></td>
-                        <td><a href="?manage=<?php echo $posts->id; ?>" class="btn btn-primary btn-block">Trash</a></td>
-                        <td><a href="edit.php?post_id=<?php echo $posts->id; ?>" class="btn btn-info btn-block">Edit</a></td>
+                        <td><a href="?manage=<?php echo $posts->id; ?>&page=<?php echo Posts::$pageno; ?>" class="btn btn-primary btn-block">Trash</a></td>
+                        <td><a href="?source=edit&post_id=<?php echo $posts->id; ?>&page=<?php echo Posts::$pageno; ?>" class="btn btn-info btn-block">Edit</a></td>
                         <td><a href="?delete=<?php echo $posts->id; ?>&image=<?php echo $posts->image; ?>&page=<?php echo Posts::$pageno; ?>" class="btn btn-danger btn-block">Delete</a></td>
                     </tr>
 

@@ -34,6 +34,8 @@ if (isset($_GET['page']) && $_GET['page'] != "" && $_GET['page'] >= 1) {
 						include_once "includes/addpost.php";
 					} elseif ($source == "trash") {
 						include_once "includes/trashpost.php";
+					} elseif ($source == "edit") {
+						include_once "includes/editpost.php";
 					} else {
 						include_once "includes/addpost.php";
 					}
